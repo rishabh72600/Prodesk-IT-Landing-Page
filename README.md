@@ -1,103 +1,63 @@
 # Prodesk IT Landing Page
 
-A modern, responsive landing page for **Prodesk IT** — a digital solutions company offering web development, mobile applications, cloud solutions, AI, cybersecurity, and business analytics services.
+A responsive vanilla JavaScript landing page for Prodesk IT.
 
-## Features
+## Sprint 2 Engineering Features
 
-- **Responsive Design** — Works seamlessly on desktop, tablet, and mobile devices
-- **Dark Mode Toggle** — Manual toggle button with system preference detection
-- **Image Adaptation** — Images are dimmed with overlay in dark mode for a cohesive experience
-- **Mobile Navigation** — Hamburger menu with animated dropdown on mobile and desktop
-- **Smooth Animations** — Fade-up animations, hover effects, and transitions
-- **Accessibility** — Focus-visible outlines, semantic HTML, and ARIA labels
-- **Performance Optimized** — Deferred JavaScript, optimized WebP images
+- **JSON-driven rendering** — All page content is fetched from `content.json` and rendered at runtime.
+- **Centralized state** — Theme, menu visibility, service selection, and contact-modal state live in one store.
+- **Persistent sessions** — The full state is serialized to `localStorage` as `prodesk-it-state` and restored on reload.
+- **No theme flash** — The saved theme is applied before the stylesheet loads.
+- **Reliable theme priority** — An explicit light or dark selection overrides `prefers-color-scheme` across the whole page, including the hero and images.
+- **Custom PubSub** — `EventBus` emits `state:changed` to decouple rendering from state mutations.
+- **Listener cleanup** — Every registered DOM event listener is explicitly removed before re-rendering and on `pagehide`.
+
+## Theme Management
+
+Use the navbar moon/sun button to switch themes. The selection is saved in `localStorage` and restored before styles load. The saved theme takes priority over the operating-system color scheme, so a dark system preference cannot force the hero section to remain dark when light mode is selected.
+
+## Interaction State
+
+- Menu open/closed state
+- Selected service card
+- Contact dialog visibility
+- Light/dark theme
+
+All of these values persist across browser reloads.
 
 ## Tech Stack
 
-- **HTML5** — Semantic markup
-- **CSS3** — Custom properties (CSS variables), Flexbox, Grid, Media queries, Animations
-- **JavaScript (Vanilla)** — Theme toggle, mobile menu, localStorage persistence
+- HTML5
+- CSS3 (custom properties, Grid, Flexbox, responsive media queries)
+- Vanilla JavaScript (DOM rendering, localStorage, PubSub)
 
 ## Project Structure
 
-```
+```text
 prodesk it landing page/
-├── index.html          # Main HTML file
-├── style.css           # All styles (light/dark mode, responsive)
-├── script.js           # Theme toggle, menu toggle, localStorage
-├── README.md           # Project documentation
-├── assets/
-│   └── images/
-│       ├── hero.webp   # Hero section image
-│       └── about.webp  # About section image
+├── index.html
+├── style.css
+├── script.js
+├── content.json
+├── HEAP_SNAPSHOT.md
+├── README.md
+└── assets/images/
+    ├── hero.webp
+    └── about.webp
 ```
 
-## Dark Mode
+## Run Locally
 
-The landing page supports three dark mode behaviors:
+From the project folder, start a local web server:
 
-1. **Manual toggle** — Click the 🌙/☀️ button in the navbar
-2. **System preference** — Automatically follows `prefers-color-scheme: dark`
-3. **Persistent** — User preference is saved in `localStorage`
-
-### Dark Mode Image Handling
-
-Images are automatically adjusted in dark mode:
-- **Brightness reduced** to 85% for a natural dimmed look
-- **Saturation slightly reduced** to 95%
-- **Subtle dark overlay** (`rgba(15, 23, 42, 0.15)`) applied via `::after` pseudo-element
-- Hero section background gradient switches to dark tones
-
-## Navigation
-
-- **Desktop (≥769px)**: Hamburger (☰) toggles between horizontal inline layout and vertical dropdown
-- **Mobile (≤768px)**: Hamburger (☰) opens a full-width vertical dropdown menu
-- Clicking any nav link closes the mobile menu automatically
-
-## Usage
-
-Open `index.html` in any modern web browser:
-
-```bash
-# Windows
-start index.html
-
-# macOS
-open index.html
-
-# Linux
-xdg-open index.html
+```powershell
+python -m http.server 5500
 ```
 
-## Customization
+Then open [http://localhost:5500](http://localhost:5500) in a modern browser.
 
-### Colors
-
-All colors are defined as CSS custom properties in `:root`. Modify these to change the theme:
-
-```css
-:root {
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --secondary: #0f172a;
-  --background: #ffffff;
-  --surface: #f8fafc;
-  --text: #1f2937;
-  --text-light: #6b7280;
-}
-```
-
-### Images
-
-Replace the WebP images in `assets/images/` with your own (keeping the same filenames or updating the `<img>` `src` attributes in `index.html`).
+If Python is unavailable, use the VS Code **Live Server** extension instead. Do not open `index.html` directly: the page fetches `content.json`, which requires it to be served over HTTP.
 
 ## Browser Support
 
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-
-## License
-
-© 2026 Prodesk IT. All Rights Reserved.
+Chrome 90+, Firefox 88+, Safari 14+, and Edge 90+.

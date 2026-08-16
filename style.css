@@ -781,6 +781,49 @@ background:var(--primary);
 color:white;
 }
 
+/* Sprint 2 state-driven theme and interactive components */
+html[data-theme="dark"] {
+  --background: #0f172a;
+  --surface: #1e293b;
+  --text: #f8fafc;
+  --text-light: #cbd5e1;
+  --white: #1e293b;
+  --secondary: #f8fafc;
+  --border: #334155;
+}
+
+/* This must be applied on body as legacy system-theme rules also set variables there. */
+html[data-theme="light"] body {
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --white: #ffffff;
+  --border: #e5e7eb;
+  --secondary: #0f172a;
+}
+
+html[data-theme="light"] .hero { background: linear-gradient(135deg, #eff6ff, #ffffff); }
+html[data-theme="light"] .hero__image img,
+html[data-theme="light"] .about__image img { filter: none; }
+
+html[data-theme="dark"] .hero { background: linear-gradient(135deg, #0f172a, #1e293b); }
+html[data-theme="dark"] .hero__image img,
+html[data-theme="dark"] .about__image img { filter: brightness(.85) saturate(.95); }
+html[data-theme="dark"] .hero__image,
+html[data-theme="dark"] .about__image { position: relative; border-radius: 20px; overflow: hidden; }
+html[data-theme="dark"] .hero__image::after,
+html[data-theme="dark"] .about__image::after { content: ""; position: absolute; inset: 0; background: rgba(15, 23, 42, .15); pointer-events: none; }
+
+.service-card { border: 0; font: inherit; color: inherit; cursor: pointer; }
+.service-card.is-selected { outline: 3px solid var(--primary); outline-offset: 2px; transform: translateY(-8px); }
+.service-status { min-height: 2rem; margin-top: 2rem; text-align: center; color: var(--text-light); }
+.modal[hidden] { display: none; }
+.modal { position: fixed; inset: 0; z-index: 2000; display: grid; place-items: center; padding: 1.5rem; background: rgba(15, 23, 42, .7); }
+.modal__content { position: relative; width: min(100%, 480px); padding: 3rem 2rem; border-radius: var(--radius); background: var(--white); color: var(--text); box-shadow: var(--shadow); text-align: center; }
+.modal__content a { color: var(--primary); font-weight: 600; }
+.modal__close { position: absolute; right: .75rem; top: .5rem; border: 0; background: transparent; color: var(--text); font-size: 2rem; cursor: pointer; }
+
 /* utility classes */
 
 .text-center{
