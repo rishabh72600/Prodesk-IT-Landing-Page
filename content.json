@@ -1,0 +1,48 @@
+{
+  "company": "Prodesk IT",
+  "navigation": ["Home", "Services", "About", "Contact"],
+  "hero": {"title":"Building Digital Solutions for Tomorrow",
+  "subtitle":"We help businesses transform through innovative software development, cloud technologies, AI-powered applications, and modern digital experiences.",
+  "primaryAction":"Get Started",
+  "secondaryAction":"Our Services",
+  "image":["assets/images/hero.webp","Software development team collaborating"]
+},
+  "servicesSection": {
+    "title":"Our Services",
+    "subtitle":"Innovative technology solutions tailored to your business needs.",
+    "initialStatus":"Select a service to learn more about our capabilities.",
+    "selectedStatus":"selected — our team will tailor a solution to your goals."},
+
+  "services": [["fa-code","Web Development","Responsive, secure, and scalable websites built using modern technologies."],
+  ["fa-mobile-screen-button","Mobile Applications","Native and cross-platform mobile applications for Android and iOS."],
+  ["fa-cloud","Cloud Solutions","Reliable cloud infrastructure, deployment, and migration services."],
+  ["fa-brain","AI & Automation","Smart automation and AI-driven business solutions."],
+  ["fa-shield-halved","Cyber Security","Protecting your digital assets with enterprise-grade security."],
+  ["fa-chart-line","Business Analytics","Transform data into actionable business insights."]],
+
+  "stats": [["100+","Projects Delivered"],
+  ["50+","Happy Clients"],
+  ["10+","Years Experience"],
+  ["24/7","Support"]],
+
+  "about": {
+    "title":"About Prodesk IT",
+    "paragraphs":["Prodesk IT delivers innovative software solutions that help businesses grow, modernize, and succeed in an increasingly digital world.","Our team specializes in web development, cloud computing, enterprise software, AI solutions, cybersecurity, and digital transformation."],
+    "action":"Learn More",
+    "image":["assets/images/about.webp","Prodesk IT team at work"]},
+
+  "contact": {
+    "title":"Ready to Build Something Amazing?",
+    "subtitle":"Let's discuss your next project and transform your ideas into reality.",
+    "action":"Contact Us"},
+
+  "footer": {
+    "tagline":"Empowering businesses through technology and innovation.",
+    "copyright":"© 2026 Prodesk IT. All Rights Reserved."},
+
+  "modal": {
+    "title":"Let's start a conversation",
+    "closeLabel":"Close contact dialog",
+    "message":"Tell us about your project at",
+    "email":"hello@prodeskit.example"}
+}
